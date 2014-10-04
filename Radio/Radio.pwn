@@ -10,7 +10,7 @@ public OnPlayerConnect(playerid) {
 //=Prikazy======================================================================
 public OnPlayerCommandText(playerid, cmdtext[]) {
   if(strcmp(cmdtext, "/radio", true) == 0) {
-    ShowPlayerDialog(playerid,100,DIALOG_STYLE_LIST,"<<<Radio>>>","{0033FF}Slovenské stanice\n{0033FF}Èeské stanice\n{FF3333}Vypnout rádio\n{FF3333}Credits","Vyber","Konec");
+    ShowPlayerDialog(playerid,100,DIALOG_STYLE_LIST,"<<<Radio>>>","{0033FF}Èeské stanice\n{0033FF}Slovenské stanice\n{FF3333}Vypnout rádio\n{FF3333}Credits","Vyber","Konec");
     return 1;
   }
   if(strcmp(cmdtext, "/stop", true) == 0) {
@@ -25,10 +25,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
     if(response) {
       switch (listitem) {
         case 0: {
-          ShowPlayerDialog(playerid,101,DIALOG_STYLE_LIST,"{0033FF}<<<Radio>>>","Europa 2\nFunRadio\nRadio Expres\nJemne Melodie\nLumen\nPatria","Vyber","Konec");
+          ShowPlayerDialog(playerid,101,DIALOG_STYLE_LIST,"{0033FF}<<<Radio>>>","Europa 2\nFajn Radio\nKiss\nRock Zone\nDance\nBlanik\nBeat\nHumor\nHipHopVibes\nMetalica\nCountry\nDepeche Mode\nClubbeat\nGroovy House","Vyber","Konec");
         }
         case 1: {
-          ShowPlayerDialog(playerid,102,DIALOG_STYLE_LIST,"{0033FF}<<<Radio>>>","Europa 2\nFajn Radio\nKiss\nRock Zone\nImpuls\nDance\nBlanik\nBeat\nHumor\nHipHopVibes\nMetalica\nCountry\nDepeche Mode\nClubbeat\nGroovy House","Vyber","Konec");
+          ShowPlayerDialog(playerid,102,DIALOG_STYLE_LIST,"{0033FF}<<<Radio>>>","Europa 2\nFunRadio\nRadio Expres\nJemne Melodie\nLumen\nPatria","Vyber","Konec");
         }
         case 2: {
           StopAudioStreamForPlayer(playerid);
@@ -40,8 +40,99 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
       }
     }
   }
+//=CZ Stanice===================================================================
+  if(dialogid == 101) {
+    if(response) {
+      switch (listitem) {
+       case 0: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://icecast3.play.cz/evropa2-128.mp3.m3u");// Europa 2
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Europa 2");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 1: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz:8000/fajn128.mp3");// Fajn Radio
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Fajn Radio");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 2: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://85.159.106.242:8000/kissmp3_128.mp3");// Radio Kiss
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Kiss");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 3: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://icecast5.play.cz/rockzone128.mp3");// Radio Rock Zone
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Rock Zone");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 4: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/dance128.mp3");// Radio Dance
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Dance");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 5: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz/blanikfm128.mp3");// Radio Blanik
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Blanik");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 6: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz:8000/beat128.mp3");// Radio Beat
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Beat");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 7: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/humor128.mp3");// Radio Humor
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Humor");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 8: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/hiphopvibes128.mp3");// Radio HipHopVibes
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio HipHopVibes");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 9: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz/metallica128.mp3");// Radio Metalica
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Metalica");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 10: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/country128.mp3");// Radio Country
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Country");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 11: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/depeche128.mp3");// Radio Depeche Mode
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Depeche Mode");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 12: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/clubbeat128.mp3");// Radio Clubbeat
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Clubbeat");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+       case 13: {
+         StopAudioStreamForPlayer(playerid);
+         PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz/ghouse128.mp3");// Radio Groovy House
+         SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Groovy House");
+         SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
+       }
+      }
+    }
+  }
 //=SK Stanice===================================================================
-  if(dialogid == 101){
+  if(dialogid == 102){
     if(response) {
       switch (listitem) {
         case 0: {
@@ -83,118 +174,5 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
       }
     }
   }
-//=CZ Stanice===================================================================
-        if(dialogid == 102) {
-                if(response) {
-                        if(listitem == 0) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://icecast3.play.cz/evropa2-128.mp3.m3u");// Europa 2
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Europa 2");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 1) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz:8000/fajn128.mp3");// Fajn Radio
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Fajn Radio");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 2) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://85.159.106.242:8000/kissmp3_128.mp3");// Radio Kiss
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Kiss");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 3) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://icecast5.play.cz/rockzone128.mp3");// Radio Rock Zone
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Rock Zone");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 4) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://icecast6.play.cz/fm-impuls-128.mp3");// Radio Impuls
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Impuls");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 5) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/dance128.mp3");// Radio Dance
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Dance");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 6) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz/blanikfm128.mp3");// Radio Blanik
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Blanik");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 7) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz:8000/beat128.mp3");// Radio Beat
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Beat");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 8) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/humor128.mp3");// Radio Humor
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Humor");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 9) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/hiphopvibes128.mp3");// Radio HipHopVibes
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio HipHopVibes");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 10) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz/metallica128.mp3");// Radio Metalica
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Metalica");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 11) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/country128.mp3");// Radio Country
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Country");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 12) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/depeche128.mp3");// Radio Depeche Mode
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Depeche Mode");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 13) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://mp3stream4.abradio.cz:8000/clubbeat128.mp3");// Radio Clubbeat
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Clubbeat");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-                        if(listitem == 14) {
-                StopAudioStreamForPlayer(playerid);
-                PlayAudioStreamForPlayer(playerid,"http://ice.abradio.cz/ghouse128.mp3");// Radio Groovy House
-                SendClientMessage(playerid, COLOR_ORANGE, "Naladil jsi si Rádio Groovy House");
-                SendClientMessage(playerid, COLOR_RED, "Pro vypnutí rádia napište /stop nebo /radio");
-                        }
-
-        }
-
-
-    }
-
-		return 1;
+  return 1;
 }
