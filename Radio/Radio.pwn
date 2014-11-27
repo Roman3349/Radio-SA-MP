@@ -12,12 +12,12 @@ public OnPlayerCommandText(playerid, cmdtext[]) {
   if(strcmp(cmdtext, "/radio", true) == 0) {
     ShowPlayerDialog(playerid,100,DIALOG_STYLE_LIST,"<<<Radio>>>","{0033FF}České stanice\n{0033FF}Slovenské stanice\n{FF3333}Vypnout rádio\n{FF3333}Credits","Vyber","Konec");
     return 1;
-  }
-  if(strcmp(cmdtext, "/stop", true) == 0) {
+  } else if(strcmp(cmdtext, "/stop", true) == 0) {
     StopAudioStreamForPlayer(playerid);
     return 1;
+  } else {
+    return 0;
   }
-  return 0;
 }
 // Dialog
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
